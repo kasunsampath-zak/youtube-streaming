@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    background-color: black;
+}
+
+#player-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 45%;
+    height: 0;
+    overflow: hidden;
+
+
+}
+
+#player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background-color: black;
+}
+
+
+
+
+/* Overlay to cover the YouTube logo area */
+#full-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: transparent;
+    z-index: 10;
+}
+
+#logo-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 113px;
+    height: 40px;
+    background: transparent;
+    z-index: 10;
+}
+
+#skip-left-overlay {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 15%;
+    z-index: 15;
+    opacity: 0;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+}
+
+#skip-right-overlay {
+    position: absolute;
+    right: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 15%;
+    z-index: 15;
+    opacity: 0;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+}
+
+.skip-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    background-color: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.fade {
+    animation: fade 1s forwards;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

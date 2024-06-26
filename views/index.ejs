@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Generate YouTube Video Link</title>
+</head>
+
+<body>
+    <h1>Enter YouTube Video URL</h1>
+    <form action="/generate" method="post">
+        <input type="text" name="videoUrl" placeholder="Enter YouTube URL" required>
+        <button type="submit">Generate Link</button>
+        <% if (!!locals.videoLink) { %>
+            <a href="<%=videoLink%>" target="_blank">
+                <%=videoLink%>
+            </a>
+            <% } %>
+    </form>
+</body>
+
+</html>
