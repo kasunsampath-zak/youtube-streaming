@@ -46,6 +46,11 @@ function onPlayerStateChange(event) {
         isPlaying = false;
     }
 
+    if (event.data == YT.PlayerState.PAUSED) {
+        player.pauseVideo();
+        player.hideRelatedVideos();
+    }
+
     if (event.data == YT.PlayerState.BUFFERING) {
         event.target.setPlaybackQuality('hd720');
     }

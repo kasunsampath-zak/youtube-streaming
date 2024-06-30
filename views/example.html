@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Embed YouTube Video with Custom Controls</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .plyr__video-embed {
+
+      position: relative;
+      width: 20%;
+      padding-bottom: 20%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .plyr__video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="plyr__video-embed" id="player">
+    <iframe
+      src="https://www.youtube.com/embed/Gt702XIwdHE??origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+      allowfullscreen allowtransparency allow="autoplay"></iframe>
+  </div>
+  <script>
+    const player = new Plyr('#player', {});
+
+    // Expose player so it can be used from the console
+    window.player = player;
+  </script>
+</body>
+
+</html>

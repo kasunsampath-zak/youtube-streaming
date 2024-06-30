@@ -3,20 +3,154 @@
 
 <head>
     <title>Generate YouTube Video Link</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Web Page</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: #3f3f3f solid 2px;
+            border-radius: 3px;
+        }
+
+        .form-group input {
+            font-size: 1.45em;
+            padding: 10px;
+            width: 450px;
+            border: none;
+        }
+
+        .form-group button {
+            font-size: 1.2em;
+            padding: 12px 15px 12px 15px;
+            background-color: #18323f;
+            color: #bfd6dd;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .form-group {
+                flex-direction: column;
+            }
+
+            .form-group input,
+            .form-group button {
+                margin: 5px 0;
+            }
+        }
+
+        ::placeholder {
+            color: black;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        ::-ms-input-placeholder {
+            /* Edge 12 -18 */
+            color: black;
+        }
+
+        .container p {
+            background-color: #ecf9db;
+            border-radius: 3px;
+            text-align: left;
+            padding: 13px;
+            margin-top: 10px;
+        }
+
+        .container p span {
+            color: #3b89ee;
+            font-size: 0.95em;
+            font-weight: 530;
+            cursor: pointer;
+        }
+
+        .copy {
+            position: relative;
+            background-color: #2d2e30;
+            border-radius: 3px;
+            font-size: 1em;
+            right: 5px;
+            top: 5px;
+        }
+
+        .text-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .copy-btn {
+            margin-left: auto;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #2d2e30;
+            color: white;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Enter YouTube Video URL</h1>
-    <form action="/generate" method="post">
-        <input type="text" name="videoUrl" placeholder="Enter YouTube URL" required>
-        <button type="submit">Generate Link</button>
-        <% if (!!locals.videoLink) { %>
-            <a href="<%=videoLink%>" target="_blank">
-                <%=videoLink%>
-            </a>
-            <% } %>
-    </form>
+    <div class="container">
+        <form class="form-group" action="/" method="post">
+            <input type="text" name="videoUrl" placeholder="Enter YouTube URL" required>
+            <button type="submit">Generate Link</button>
+        </form>
+
+        <p class="text-container">
+            <span id="videoLink" onclick="openVideo()"></span>
+            <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+        </p>
+    </div>
+
+    <script>
+        // Function to get query parameter
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Display the message parameter if it exists
+        const videoLink = getQueryParam('videoLink');
+        if (videoLink) {
+            document.getElementById('videoLink').textContent = "https://attendancetrackerwisesoftlab.online:91/video/" + videoLink;
+        } else {
+            document.getElementById('videoLink').parentElement.style.display = 'none'
+        }
+
+        function openVideo() {
+            window.open('/video/' + getQueryParam('videoLink'), '_blank').focus();
+        }
+
+        function copyToClipboard() {
+            const textToCopy = document.getElementById('videoLink').textContent;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            alert('Text copied to clipboard');
+        }
+    </script>
 </body>
 
 </html>

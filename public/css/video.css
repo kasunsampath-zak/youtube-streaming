@@ -23,6 +23,10 @@ body {
     background-color: black;
 }
 
+.ytp-pause-overlay {
+    display: none !important;
+  }
+
 
 
 

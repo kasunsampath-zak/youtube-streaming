@@ -13,6 +13,7 @@
 <body>
     <script src="/js/video.js"></script>
     <script>
+
         // Load the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -30,10 +31,10 @@
                     'rel': 0,              // Do not show related videos
                     'modestbranding': 1,   // Minimize YouTube branding
                     'disablekb': 1,        // Disable keyboard controls
-                    'iv_load_policy': 0,   // Hide video annotations
+                    'iv_load_policy': 3,   // Hide video annotations
                     'cc_load_policy': 0,   // Disable closed captions
-                    'playsinline': 1,
-                    'autoplay': 1      // Play inline on mobile devices
+                    'playsinline': 1,       // Play inline on mobile devices
+                    'autoplay': 1
                 },
                 events: {
                     'onReady': onPlayerReady,

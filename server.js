@@ -13,13 +13,17 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render('index');
 });
+app.get('/ex', (req, res) => {
+    res.render('example');
+});
 
-app.post('/generate', (req, res) => {
+app.post('/', (req, res) => {
     const videoUrl = req.body.videoUrl;
     const videoId = new URL(videoUrl).searchParams.get('v');
     const encryptedId = caesarCipherEncrypt(videoId, shift)
-    const videoLink = `/video/${encryptedId}`;
-    res.render('index', { videoLink });
+    const videoLink = `/${encryptedId}`;
+    // res.render('index', { videoLink });
+    res.redirect(`/?videoLink=${encodeURIComponent(encryptedId)}`);
 });
 
 app.get('/video/:id', (req, res) => {

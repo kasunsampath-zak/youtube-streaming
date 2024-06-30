@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plyr.io with YouTube Iframe API</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
+    <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+
+<body>
+    <h1>YouTube Video with Plyr</h1>
+    <div class="plyr__video-embed" id="player">
+        <iframe src="https://www.youtube.com/embed/Gt702XIwdHE?enablejsapi=1&rel=0" allowfullscreen allow="autoplay"
+            id="youtube-iframe"></iframe>
+    </div>
+
+    <button id="play-button">Play Video</button>
+    <button id="pause-button">Pause Video</button>
+    <button id="fullscreen-button">Fullscreen</button>
+    <button id="skip-backward-button">-10 Seconds</button>
+    <button id="skip-forward-button">+10 Seconds</button>
+    <button id="quality-144p-button">144p</button>
+    <button id="quality-360p-button">360p</button>
+    <button id="quality-720p-button">720p</button>
+    <button id="quality-1080p-button">1080p</button>
+    <div>
+        <label for="seek-time">Seek to:</label>
+        <input type="number" id="seek-time" placeholder="Enter time in seconds">
+        <button id="seek-button">Seek</button>
+    </div>
+
+    <script>
+        let youtubePlayer;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const plyrPlayer = new Plyr('#player', {
+                controls: ['play', 'progress', 'volume', 'fullscreen']
+            });
+
+            // YouTube Iframe API callback function
+            window.onYouTubeIframeAPIReady = () => {
+                const iframe = document.getElementById('youtube-iframe');
+                youtubePlayer = new YT.Player(iframe, {
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+            };
+
+            function onPlayerReady(event) {
+                document.getElementById('play-button').addEventListener('click', () => {
+                    plyrPlayer.play();
+                    youtubePlayer.playVideo();
+                });
+
+                document.getElementById('pause-button').addEventListener('click', () => {
+                    plyrPlayer.pause();
+                    youtubePlayer.pauseVideo();
+                });
+                document.getElementById('fullscreen-button').addEventListener('click', () => {
+                    plyrPlayer.fullscreen.enter();
+                });
+                document.getElementById('skip-backward-button').addEventListener('click', () => {
+                    let currentTime = youtubePlayer.getCurrentTime();
+                    youtubePlayer.seekTo(currentTime - 10, true);
+                });
+
+                document.getElementById('skip-forward-button').addEventListener('click', () => {
+                    let currentTime = youtubePlayer.getCurrentTime();
+                    youtubePlayer.seekTo(currentTime + 10, true);
+                });
+
+                document.getElementById('quality-144p-button').addEventListener('click', () => {
+                    youtubePlayer.setPlaybackQuality('small');
+                });
+
+                document.getElementById('quality-360p-button').addEventListener('click', () => {
+                    youtubePlayer.setPlaybackQuality('medium');
+                });
+
+                document.getElementById('quality-720p-button').addEventListener('click', () => {
+                    youtubePlayer.setPlaybackQuality('hd720');
+                });
+
+                document.getElementById('quality-1080p-button').addEventListener('click', () => {
+                    youtubePlayer.setPlaybackQuality('hd1080');
+                });
+                document.getElementById('seek-button').addEventListener('click', () => {
+                    const seekTime = document.getElementById('seek-time').value;
+                    youtubePlayer.seekTo(seekTime, true);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
