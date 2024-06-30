@@ -7,16 +7,21 @@
 </head>
 
 <body>
-    <h1>Enter YouTube Video URL</h1>
-    <form action="/generate" method="post">
-        <input type="text" name="videoUrl" placeholder="Enter YouTube URL" required>
-        <button type="submit">Generate Link</button>
+    <div class="main-div">
+        <h1>Enter YouTube Video URL</h1>
+        <form action="/generate" method="post" class="form">
+            <input type="text" name="videoUrl" placeholder="Enter YouTube URL" required class="input">
+            <button type="submit" class="button">Generate Link</button>
+        </form>
         <% if (!!locals.videoLink) { %>
-            <a href="<%=videoLink%>" target="_blank">
-                <%=videoLink%>
-            </a>
+            <div class="videolinkContainer">
+                <a href="<%=videoLink%>" target="_blank" class="videolink">
+                    <%=videoLink%>
+                </a>
+                <p class="copy">Copy</p>
+            </div>
             <% } %>
-    </form>
+    </div>
 </body>
 
 </html>

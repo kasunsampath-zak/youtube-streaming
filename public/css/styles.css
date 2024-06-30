@@ -1,0 +1,92 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    width: max-content;
+}
+
+.input {
+    border-right: none;
+    padding-left: 10px;
+    /* width: 200px; */
+    /* line-height: 20 */
+    font-size: 20px;
+    color: black;
+    width: 550px;
+    height: 55px;
+}
+
+.input::placeholder {
+    font-size: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: black;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.button {
+    border: none;
+    /* padding: 15px 20px 15px 20px; */
+    /* padding-left: 15px; */
+    /* padding-right: 15px; */
+    font-size: 16px;
+    color: white;
+    background-color: navy;
+    width: 140px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.videolinkContainer {
+    display: flex;
+    flex-direction: row;
+    width: 672px;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: rgb(220, 237, 186);
+    height: 55px;
+}
+
+.videolink {
+    text-decoration: none;
+    color: rgb(44, 44, 143);
+    font-size: 18px;
+}
+
+.copy {
+    text-transform: uppercase;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
