@@ -6,7 +6,7 @@ docker build -t attendancetrackerwisesoftlab.online/youtube-streamer:latest .
 ### Login to Registry
 docker login https://attendancetrackerwisesoftlab.online/
 adminuser
-dcr@reg
+
 
 ### Push to docker registry
 docker push attendancetrackerwisesoftlab.online/youtube-streamer:latest
