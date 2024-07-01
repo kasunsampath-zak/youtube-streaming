@@ -47,13 +47,32 @@
 
         @media (max-width: 600px) {
             .form-group {
-                flex-direction: column;
+                display: block;
+                margin: 0 40px;
+                width: 80%;
             }
 
-            .form-group input,
-            .form-group button {
-                margin: 5px 0;
+            .form-group input {
+                font-size: 1em;
+                padding: 10px;
+                border: none;
+                width: 90%;
             }
+
+            .form-group button {
+                font-size: 1em;
+                padding: 12px 15px 12px 15px;
+                background-color: #18323f;
+                color: #bfd6dd;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            .text-container {
+                margin: 0 40px;
+            }
+
         }
 
         ::placeholder {
@@ -78,18 +97,10 @@
         .container p span {
             color: #3b89ee;
             font-size: 0.95em;
-            font-weight: 530;
+            font-weight: 500;
             cursor: pointer;
         }
 
-        .copy {
-            position: relative;
-            background-color: #2d2e30;
-            border-radius: 3px;
-            font-size: 1em;
-            right: 5px;
-            top: 5px;
-        }
 
         .text-container {
             display: flex;
@@ -114,6 +125,7 @@
             <input type="text" name="videoUrl" placeholder="Enter YouTube URL" required>
             <button type="submit">Generate Link</button>
         </form>
+
 
         <p class="text-container">
             <span id="videoLink" onclick="openVideo()"></span>
