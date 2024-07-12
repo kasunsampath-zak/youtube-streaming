@@ -104,14 +104,14 @@ function displayCurrentQuality() {
 
 function skipForward() {
     var currentTime = player.getCurrentTime();
-    player.seekTo(currentTime + 10); // Skip forward 10 seconds
+    player.seekTo(currentTime + 5); // Skip forward 10 seconds
     showAnimation('skip-right-overlay');
 }
 
 // Function to skip backward
 function skipBackward() {
     var currentTime = player.getCurrentTime();
-    player.seekTo(Math.max(currentTime - 10, 0)); // Skip backward 10 seconds, but not below 0
+    player.seekTo(Math.max(currentTime - 5, 0)); // Skip backward 10 seconds, but not below 0
     showAnimation('skip-left-overlay');
 }
 

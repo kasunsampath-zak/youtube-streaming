@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const url = require('url');
 const { caesarCipherEncrypt, caesarCipherDecrypt } = require('./helper/cipher');
 const shift = 5
 const app = express();
@@ -13,16 +14,19 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render('index');
 });
-app.get('/ex', (req, res) => {
-    res.render('example');
-});
 
 app.post('/', (req, res) => {
     const videoUrl = req.body.videoUrl;
-    const videoId = new URL(videoUrl).searchParams.get('v');
+    let videoId = new URL(videoUrl).searchParams.get('v');
+    if (!videoId) {
+        const parsedUrl = url.parse(videoUrl);
+        const pathname = parsedUrl.pathname;
+        const segments = pathname.split('/');
+        videoId = segments.pop() || segments.pop();
+
+        console.log(videoId);
+    }
     const encryptedId = caesarCipherEncrypt(videoId, shift)
-    const videoLink = `/${encryptedId}`;
-    // res.render('index', { videoLink });
     res.redirect(`/?videoLink=${encodeURIComponent(encryptedId)}`);
 });
 
