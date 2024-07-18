@@ -14,7 +14,9 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render('index');
 });
-
+app.get('/impl', (req, res) => {
+    // res.render('videoi');
+});
 app.post('/', (req, res) => {
     const videoUrl = req.body.videoUrl;
     let videoId = new URL(videoUrl).searchParams.get('v');

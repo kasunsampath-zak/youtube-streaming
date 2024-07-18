@@ -30,6 +30,10 @@ body {
 
 
 
+:root {
+--full-height-minus-50px: calc(100vh - 50px);
+}
+
 /* Overlay to cover the YouTube logo area */
 #full-overlay {
     position: absolute;
@@ -37,6 +41,7 @@ body {
     right: 0;
     width: 100%;
     background: transparent;
+    height: var(--full-height-minus-50px);
     z-index: 10;
 }
 

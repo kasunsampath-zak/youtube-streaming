@@ -1,6 +1,3 @@
-$(document).ready(function () {
-    $("#full-overlay").css("height", $("#player").height() - 45);
-});
 
 
 
